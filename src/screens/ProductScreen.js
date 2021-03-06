@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, LinkGoup, Button, Card, ListGroup } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
+// import products from '../products'
 import axios from 'axios'
 
 function ProductScreen({ match }) {
@@ -10,7 +10,7 @@ function ProductScreen({ match }) {
     useEffect(()=>{
 
         async function fetchProduct(){
-            const{ data } = await axios.get(`/api/product/${match.params._id}`)
+            const{ data } = await axios.get(`/api/product/${match.params.id}`)
             setProduct(data)
         }
 
@@ -65,7 +65,7 @@ function ProductScreen({ match }) {
                             </ListGroup.Item>
 
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={product.countInStock==0} type='button'>Add to Cart</Button>
+                                <Button className='btn-block' disabled={product.countInStock===0} type='button'>Add to Cart</Button>
                             </ListGroup.Item>
 
 
